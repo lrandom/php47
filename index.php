@@ -8,24 +8,28 @@
     <title>Document</title>
 </head>
 <body>
-  <?php
-   echo "Hello World";
-   echo 10 + 20;
+<?php
+define("PI", 3.14);
+define("RADIUS", 360);
 
-   //under_score -> python function
-   //camelCase -> variable name
-   //PascalCase -> class name
+echo "Hello World";
+echo 10 + 20;
 
-  $myFullName = "Nguyen Thanh Luan";
-  $myJob = "Developer";
+//under_score -> python function
+//camelCase -> variable name
+//PascalCase -> class name
 
-  echo "<h1>".$myFullName."</h1>";
-  echo "<p class='text-bold text-red'>".$myJob."</p>";
-  ?>
+$myFullName = "Nguyen Thanh Luan";
+$myJob = "Developer";
+
+echo "<h1>" . $myFullName . "</h1>";
+echo "<p class='text-bold text-red'>" . $myJob . "</p>";
+echo PI * RADIUS;
+?>
 </body>
 
 <style>
-    .text-bold{
+    .text-bold {
         font-weight: bold;
     }
 
