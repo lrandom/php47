@@ -11,6 +11,26 @@
   <?php
    echo "Hello World";
    echo 10 + 20;
+
+   //under_score -> python function
+   //camelCase -> variable name
+   //PascalCase -> class name
+
+  $myFullName = "Nguyen Thanh Luan";
+  $myJob = "Developer";
+
+  echo "<h1>".$myFullName."</h1>";
+  echo "<p class='text-bold text-red'>".$myJob."</p>";
   ?>
 </body>
+
+<style>
+    .text-bold{
+        font-weight: bold;
+    }
+
+    .text-red {
+        color: red;
+    }
+</style>
 </html>
