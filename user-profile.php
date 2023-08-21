@@ -36,13 +36,8 @@ class PrepSso
         return do_shortcode($innerContent);
     }
 
-    public static function prep_auth_info_shortcode()
+    private static function _generateAuthUserProfileUIContentForDesktopNav($prepUser)
     {
-        global $prepUser;
-        if (!$prepUser) {
-            return '';
-        }
-        $url = self::get_sso_auth_account_url();
         $stringOne = '
            <div class="relative dropdown group z-50">
             <div class="flex items-center gap-2 flex-grow rounded-full w-10 h-10 overflow-hidden">
@@ -96,24 +91,22 @@ class PrepSso
         return $stringOne . $stringTwo . $stringThree;
     }
 
-
-    public static function logout()
+    private static function _generateAuthUserProfiledUIContentForMobileNav()
     {
-        $api = static::get_sso_auth_logout_api();
-        $token = self::_getToken();
-        if ($token) {
-            $args = [
-                'headers' => [
-                    "Content-type" => "application/json",
-                    "Accept" => 'application/json',
-                    "Authorization" => "Bearer $token"
-                ]
-            ];
-            $response = wp_remote_post($api, $args);
+
+    }
+
+    public static function prep_auth_info_shortcode($isDesktop = true)
+    {
+        global $prepUser;
+        if (!$prepUser) {
+            return '';
         }
-        echo '<script type="text/javascript">
-        window.location=document.location.href;
-        </script>';
+        $url = self::get_sso_auth_account_url();
+        if ($isDesktop) {
+            return self::_generateAuthUserProfileUIContentForDesktopNav($prepUser);
+        }
+        return self::_generateAuthUserProfileUIContentForDesktopNav($prepUser);
     }
 
     public static function init()
