@@ -14,7 +14,7 @@ if (!$conn) {
     die('Không thể kết nối' . mysqli_connect_error());
 }
 
-$sql = "SELECT * FROM products";
+$sql = "SELECT *,products.id as product_id,products.name as product_name,categories.name as category_name FROM products LEFT JOIN categories ON products.category_id = categories.id";
 $rs = mysqli_query($conn, $sql);
 ?>
 
@@ -24,6 +24,7 @@ $rs = mysqli_query($conn, $sql);
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Category</th>
     </tr>
     </thead>
 
@@ -32,8 +33,11 @@ $rs = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($rs)) {
         ?>
         <tr>
-            <td><?php echo $row['id']; ?></td>
-            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['product_id']; ?></td>
+            <td><?php echo $row['product_name']; ?></td>
+            <td>
+                <?php echo $row['category_name']; ?>
+            </td>
         </tr>
         <?php
     }
