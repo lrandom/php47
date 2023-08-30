@@ -25,6 +25,7 @@ $rs = mysqli_query($conn, $sql);
         <th>ID</th>
         <th>Name</th>
         <th>Category</th>
+        <th>Action</th>
     </tr>
     </thead>
 
@@ -37,6 +38,10 @@ $rs = mysqli_query($conn, $sql);
             <td><?php echo $row['product_name']; ?></td>
             <td>
                 <?php echo $row['category_name']; ?>
+            </td>
+            <td>
+                <a href="update.php?id=<?php echo $row['product_id']; ?>">Update</a>
+                <a onclick="return confirm('Are you sure you want to delete ?')" href="delete.php?id=<?php echo $row['product_id']; ?>">Delete</a>
             </td>
         </tr>
         <?php
