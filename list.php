@@ -9,10 +9,7 @@
 </head>
 <body>
 <?php
-$conn = mysqli_connect('127.0.0.1', 'root', 'koodinh@', 'php47');
-if (!$conn) {
-    die('Không thể kết nối' . mysqli_connect_error());
-}
+require_once 'connectDB.php';
 
 $sql = "SELECT *,products.id as product_id,products.name as product_name,categories.name as category_name FROM products LEFT JOIN categories ON products.category_id = categories.id";
 $rs = mysqli_query($conn, $sql);
