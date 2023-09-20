@@ -13,4 +13,9 @@ class DB
             die('Could not connect.' . $e->getMessage());
         }
     }
+
+    public function getPdo()
+    {
+        return $this->pdo;
+    }
 }
